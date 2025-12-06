@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+
+
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080808;
+  --color-second-bg: #131313;
+  --color-text: white;
+  --color-main: #00ffee;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text font-poppins;
+  }
+}
+
+@keyframes gradient {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+
+.mono {
+  font-family: "Roboto Mono", monospace;
+}
+
+.fancy {
+  font-family: "Bebas Neue", sans-serif;
+}
