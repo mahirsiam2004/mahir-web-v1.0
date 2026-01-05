@@ -1,74 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { RiGithubFill, RiExternalLinkLine } from "react-icons/ri";
-
-const projectsData = [
-  {
-    title: "GreenNest – Indoor Plant Store",
-    description:
-      "A responsive plant shop with cart, checkout, and expert consultation booking.",
-    tech: ["React", "Tailwind", "DaisyUI", "Framer Motion", "Axios", "GSAP"],
-    features: [
-      "Plant catalog",
-      "Cart system",
-      "Checkout flow",
-      "Consultation booking",
-      "Smooth animations",
-    ],
-    liveLink: "https://greennest17.pages.dev/",
-    githubLink: "https://github.com/mahirsiam2004/GreenNext",
-    image: "https://placehold.co/600x400/0f172a/06b6d4?text=GreenNest", // Placeholder, user can replace later
-    category: "Frontend",
-  },
-  {
-    title: "Altrion – Online Learning Platform",
-    description:
-      "A complete learning platform with course browsing, enrollments, authentication, and REST APIs.",
-    tech: [
-      "React",
-      "Tailwind",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Framer Motion",
-      "GSAP",
-    ],
-    features: [
-      "Course CRUD",
-      "Search & Filter",
-      "Featured courses",
-      "Student enrollment",
-      "Authentication",
-      "Dynamic routing",
-    ],
-    liveLink: "https://altrion-client.vercel.app/",
-    githubLink: "https://github.com/mahirsiam2004/Altrion-client",
-    serverLink: "https://github.com/mahirsiam2004/Altrion-server",
-    image: "https://placehold.co/600x400/0f172a/06b6d4?text=Altrion", // Placeholder
-    category: "Full-Stack",
-  },
-  {
-    title: "Lumura",
-    description:
-      "A comprehensive platform with role-based dashboard system supporting multiple user roles with secure authentication and payment integration.",
-    tech: ["React", "Tailwind", "Firebase", "MongoDB", "Express", "Stripe"],
-    features: [
-      "Role-based dashboard",
-      "User management",
-      "Admin panel",
-      "Decorator portal",
-      "Payment integration",
-      "Secure authentication",
-    ],
-    liveLink: "https://lumora-client-cku9.vercel.app/services",
-    githubLink: "https://github.com/mahirsiam2004/Lumora-Client", 
-    serverLink: "https://github.com/mahirsiam2004/Lumora-server", 
-    image: "https://placehold.co/600x400/0f172a/06b6d4?text=Lumura", 
-    category: "Full-Stack",
-  },
-];
+import { useNavigate } from "react-router-dom";
+import {
+  RiGithubFill,
+  RiExternalLinkLine,
+  RiInformationLine,
+} from "react-icons/ri";
+import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="projects" className="min-h-screen bg-bg py-24 px-[12%]">
       <h2 className="text-5xl font-bold text-center text-white mb-16">
@@ -116,12 +58,18 @@ const Projects = () => {
                 ))}
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate(`/project/${project.id}`)}
+                  className="flex items-center gap-2 px-6 py-3 bg-main text-black rounded-lg font-bold hover:bg-white transition-colors duration-300"
+                >
+                  <RiInformationLine /> View Details
+                </button>
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-main text-black rounded-lg font-bold hover:bg-white transition-colors duration-300"
+                  className="flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-main text-main rounded-lg font-bold hover:bg-main hover:text-black transition-colors duration-300"
                 >
                   <RiExternalLinkLine /> Live Demo
                 </a>

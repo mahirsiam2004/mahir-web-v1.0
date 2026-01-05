@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { RiFacebookFill, RiTelegramFill, RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
+import { RiFacebookFill, RiTelegramFill, RiGithubFill, RiLinkedinFill, RiDownloadLine } from 'react-icons/ri';
 import { FaReact, FaJsSquare } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
@@ -84,6 +84,18 @@ const Hero = () => {
                 animate="visible"
                 className="max-w-5xl z-10"
             >
+                {/* Professional Photo */}
+                <motion.div variants={item} className="mb-8 flex justify-center">
+                    <div className="relative">
+                        <div className="absolute inset-0 bg-main rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                        <img
+                            src="https://avatars.githubusercontent.com/u/166984445?v=4?text=MS"
+                            alt="Mahir Shiyam Muhin"
+                            className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-main object-cover shadow-[0_0_30px_rgba(0,188,212,0.5)]"
+                        />
+                    </div>
+                </motion.div>
+
                 <motion.p variants={item} className="text-xl md:text-2xl font-light text-gray-400 mb-4 tracking-widest">
                     Hello, I am
                 </motion.p>
@@ -106,7 +118,7 @@ const Hero = () => {
                 </motion.p>
 
                 {/* --- Call To Action Buttons --- */}
-                <motion.div variants={item} className="flex justify-center gap-6 mb-12">
+                <motion.div variants={item} className="flex flex-wrap justify-center gap-4 md:gap-6 mb-12">
                     <Link to="projects" smooth={true} duration={500} className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-main to-cyan-400 group-hover:from-main group-hover:to-cyan-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-main/50 cursor-pointer">
                         <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 rounded-md group-hover:bg-opacity-0 text-lg font-bold">
                             View Work
@@ -116,6 +128,21 @@ const Hero = () => {
                     <Link to="contact" smooth={true} duration={500} className="inline-block px-6 py-3 bg-transparent text-main border-2 border-main rounded-lg text-lg font-bold hover:bg-main hover:text-gray-900 transition-all duration-300 cursor-pointer shadow-[0_0_10px_rgba(0,188,212,0.5)]">
                         Get In Touch
                     </Link>
+
+                    {/* Resume Download Button */}
+                    <a
+                        href="/resume.pdf"
+                        download
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-main text-black rounded-lg text-lg font-bold hover:bg-white transition-all duration-300 cursor-pointer shadow-[0_0_10px_rgba(0,188,212,0.5)]"
+                        onClick={(e) => {
+                            // If resume doesn't exist, prevent download and show message
+                            e.preventDefault();
+                            // You can add toast notification here if needed
+                            window.open('/resume.pdf', '_blank');
+                        }}
+                    >
+                        <RiDownloadLine /> Download Resume
+                    </a>
                 </motion.div>
 
                 {/* --- Social Icons (Minimalist) --- */}

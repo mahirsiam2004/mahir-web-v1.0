@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
+import { RiMailLine, RiPhoneLine, RiWhatsappLine } from 'react-icons/ri';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -45,11 +46,71 @@ const Contact = () => {
         setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
     };
 
+    const contactInfo = {
+        email: 'mahirsiam2004@gmail.com',
+        phone: '+880 1921899394', // Update with your actual phone number
+        whatsapp: '+880 1921899394', // Update with your actual WhatsApp number
+    };
+
     return (
         <section id="contact" className="min-h-screen bg-bg py-24 px-[12%] flex flex-col items-center">
             <h2 className="text-5xl font-bold text-white mb-16">
                 Contact <span className="text-main">Me</span>
             </h2>
+
+            {/* Direct Contact Information */}
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="w-full max-w-4xl mb-12"
+            >
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* Email */}
+                    <a
+                        href={`mailto:${contactInfo.email}`}
+                        className="bg-second-bg p-6 rounded-2xl hover:bg-main hover:text-black transition-all duration-300 group cursor-pointer"
+                    >
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-bg rounded-full flex items-center justify-center mb-4 group-hover:bg-black group-hover:text-main transition-all duration-300">
+                                <RiMailLine className="text-main text-2xl group-hover:text-main" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-2">Email</h3>
+                            <p className="text-gray-400 group-hover:text-black break-all">{contactInfo.email}</p>
+                        </div>
+                    </a>
+
+                    {/* Phone */}
+                    <a
+                        href={`tel:${contactInfo.phone.replace(/\s/g, '')}`}
+                        className="bg-second-bg p-6 rounded-2xl hover:bg-main hover:text-black transition-all duration-300 group cursor-pointer"
+                    >
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-bg rounded-full flex items-center justify-center mb-4 group-hover:bg-black group-hover:text-main transition-all duration-300">
+                                <RiPhoneLine className="text-main text-2xl group-hover:text-main" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-2">Phone</h3>
+                            <p className="text-gray-400 group-hover:text-black">{contactInfo.phone}</p>
+                        </div>
+                    </a>
+
+                    {/* WhatsApp */}
+                    <a
+                        href={`https://wa.me/${contactInfo.whatsapp.replace(/\s/g, '').replace('+', '')}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="bg-second-bg p-6 rounded-2xl hover:bg-main hover:text-black transition-all duration-300 group cursor-pointer"
+                    >
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 bg-bg rounded-full flex items-center justify-center mb-4 group-hover:bg-black group-hover:text-main transition-all duration-300">
+                                <RiWhatsappLine className="text-main text-2xl group-hover:text-main" />
+                            </div>
+                            <h3 className="text-xl font-bold mb-2">WhatsApp</h3>
+                            <p className="text-gray-400 group-hover:text-black">{contactInfo.whatsapp}</p>
+                        </div>
+                    </a>
+                </div>
+            </motion.div>
 
             <motion.form
                 initial={{ opacity: 0, y: 50 }}
